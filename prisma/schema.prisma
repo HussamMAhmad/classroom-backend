@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Departments {
+  id          Int        @id @default(autoincrement())
+  code        String     @unique
+  name        String
+  description String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  subjects    Subjects[]
+}
+
+model Subjects {
+  id           Int         @id @default(autoincrement())
+  code         String      @unique
+  name         String
+  description  String?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  departmentId Int
+  department   Departments @relation(fields: [departmentId], references: [id], onDelete: Restrict)
+}
