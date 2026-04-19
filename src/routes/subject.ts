@@ -7,10 +7,24 @@ const SubjectRouter = express.Router();
 SubjectRouter.get("/", async (req, res) => {
   try {
     console.log("Getting subjects with query:", req.query);
-    const { search, department, page = 1, limit = 10 } = req.query;
 
-    const currentPage = Math.max(1, +page);
-    const limitPerPage = Math.max(1, +limit);
+    const { search, department, page = "1", limit = "10" } = req.query;
+
+    const currentPage = Number(page);
+    const requestedLimit = Number(limit);
+    
+    if (
+      !Number.isInteger(currentPage) ||
+      currentPage < 1 ||
+      !Number.isInteger(requestedLimit) ||
+      requestedLimit < 1
+    ) {
+      return res
+        .status(400)
+        .json({ message: "page and limit must be positive integers" });
+    }
+
+    const limitPerPage = Math.min(requestedLimit, 100);
 
     const offset = (currentPage - 1) * limitPerPage;
 
