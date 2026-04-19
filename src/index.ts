@@ -1,12 +1,24 @@
 import express from "express";
-import { PORT} from "./config/env";
+import { PORT, FRONTEND_URL } from "./config/env";
+import { SubjectRouter } from "./routes/subject";
+import cors from "cors";
 
 const app = express();
 
 app.use(express.json());
 
+app.use(
+  cors({
+    origin: FRONTEND_URL,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  }),
+);
+
+app.use("/api/subjects", SubjectRouter);
+
 app.get("/", (req, res) => {
-  res.send(`The database URL is`);
+  res.send("Welcome to the Classroom Management API");
 });
 
 app.listen(PORT, () => {
