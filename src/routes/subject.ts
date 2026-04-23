@@ -8,7 +8,7 @@ SubjectRouter.get("/", async (req, res) => {
   try {
     console.log("Getting subjects with query:", req.query);
 
-    const { search, department, page = "1", limit = "10" } = req.query;
+    const { search  , department, page = "1", limit = "10" } = req.query;
 
     const currentPage = Number(page);
     const requestedLimit = Number(limit);
