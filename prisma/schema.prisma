@@ -25,7 +25,6 @@ model Subjects {
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt
   departmentId Int
-  classId      Int?        @unique
   department   Departments @relation(fields: [departmentId], references: [id], onDelete: Restrict)
   classes      Classes[]
 }
@@ -35,6 +34,7 @@ model Classes {
   invite          String        @unique
   name            String
   bannerCldPublic String
+  bannerUrl       String
   description     String
   capacity        Int           @default(50)
   status          Status        @default(ACTIVE)
