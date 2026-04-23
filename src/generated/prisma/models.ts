@@ -10,4 +10,10 @@
  */
 export type * from './models/Departments.js'
 export type * from './models/Subjects.js'
+export type * from './models/Classes.js'
+export type * from './models/Enrollments.js'
+export type * from './models/User.js'
+export type * from './models/Session.js'
+export type * from './models/Account.js'
+export type * from './models/Verification.js'
 export type * from './commonInputTypes.js'
