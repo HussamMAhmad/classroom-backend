@@ -14,3 +14,5 @@ export const BETTER_AUTH_SECRET = process.env.BETTER_AUTH_SECRET!;
 export const BETTER_AUTH_URL = process.env.BETTER_AUTH_URL!;
 export const PORT = process.env.PORT;
 export const FRONTEND_URL = process.env.FRONTEND_URL;
+export const ARCJET_KEY = process.env.ARCJET_KEY;
+export const ARCJET_ENV = process.env.ARCJET_ENV;
