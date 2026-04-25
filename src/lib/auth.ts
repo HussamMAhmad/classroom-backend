@@ -17,7 +17,7 @@ export const auth = betterAuth({
       role: {
         type: "string",
         required: true,
-        defaultValue: "STUDENT",
+        defaultValue: "student",
         input: true,
       },
       imageCldPublic: {

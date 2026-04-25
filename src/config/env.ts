@@ -8,6 +8,7 @@ const required = [
   "BETTER_AUTH_URL",
   "ARCJET_KEY",
   "ARCJET_ENV",
+  "FRONTEND_URL"
 ] as const;
 for (const key of required) {
   if (!process.env[key]) {

@@ -76,7 +76,7 @@ model User {
   sessions       Session[]
   accounts       Account[]
   imageCldPublic String?
-  role           Role      @default(STUDENT)
+  role           Role      @default(student)
 
   teacher     Classes[]
   enrollments Enrollments[]
@@ -134,9 +134,9 @@ model Verification {
 }
 
 enum Role {
-  STUDENT
-  TEACHER
-  ADMIN
+  student
+  teacher
+  admin
 }
 
 enum Status {
