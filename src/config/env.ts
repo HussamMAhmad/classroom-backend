@@ -2,7 +2,13 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const required = ["DATABASE_URL", "BETTER_AUTH_SECRET", "BETTER_AUTH_URL"] as const;
+const required = [
+  "DATABASE_URL",
+  "BETTER_AUTH_SECRET",
+  "BETTER_AUTH_URL",
+  "ARCJET_KEY",
+  "ARCJET_ENV",
+] as const;
 for (const key of required) {
   if (!process.env[key]) {
     throw new Error(`Missing required environment variable: ${key}`);

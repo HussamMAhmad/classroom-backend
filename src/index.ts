@@ -21,7 +21,6 @@ app.use(express.json());
 app.use(securityMiddleware)
 
 app.use("/api/subjects", SubjectRouter);
-app.all("/api/auth/*", toNodeHandler(auth));
 app.get("/", (req, res) => {
   res.send("Welcome to the Classroom Management API");
 });
