@@ -4,9 +4,9 @@ import { SubjectRouter } from "./routes/subject";
 import cors from "cors";
 import { toNodeHandler } from "better-auth/node";
 import {auth} from "./auth"
-const app = express();
+import securityMiddleware from "./middleware/security"
 
-app.use(express.json());
+const app = express();
 
 app.use(
   cors({
@@ -16,8 +16,11 @@ app.use(
   }),
 );
 
+app.use(express.json());
+
+app.use(securityMiddleware)
+
 app.use("/api/subjects", SubjectRouter);
-app.all("/api/auth/*", toNodeHandler(auth));
 app.get("/", (req, res) => {
   res.send("Welcome to the Classroom Management API");
 });
