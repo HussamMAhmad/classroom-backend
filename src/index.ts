@@ -1,3 +1,5 @@
+import AgentAPI from "apminsight";
+AgentAPI.config(); 
 import express from "express";
 import { PORT, FRONTEND_URL } from "./config/env";
 import { SubjectRouter } from "./routes/subject";
