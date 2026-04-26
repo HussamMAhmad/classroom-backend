@@ -1,12 +1,12 @@
 import AgentAPI from "apminsight";
 AgentAPI.config(); 
 import express from "express";
-import { PORT, FRONTEND_URL } from "./config/env";
-import { SubjectRouter } from "./routes/subject";
+import { PORT, FRONTEND_URL } from "./config/env.js";
+import { SubjectRouter } from "./routes/subject.js";
 import cors from "cors";
 import { toNodeHandler } from "better-auth/node";
-import {auth} from "./lib/auth"
-import securityMiddleware from "./middleware/security"
+import {auth} from "./lib/auth.js"
+import securityMiddleware from "./middleware/security.js"
 
 const app = express();
 
