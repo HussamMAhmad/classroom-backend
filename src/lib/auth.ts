@@ -1,7 +1,7 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
-import { prisma } from "../config/prisma";
-import { BETTER_AUTH_SECRET, FRONTEND_URL } from "../config/env";
+import { prisma } from "../config/prisma.js";
+import { BETTER_AUTH_SECRET, FRONTEND_URL } from "../config/env.js";
 
 export const auth = betterAuth({
   secret: BETTER_AUTH_SECRET!,
