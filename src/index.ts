@@ -7,8 +7,10 @@ import cors from "cors";
 import { toNodeHandler } from "better-auth/node";
 import {auth} from "./lib/auth.js"
 import securityMiddleware from "./middleware/security.js"
+
 import usersRouter from "./routes/users.js";
 import classesRouter from "./routes/classes.js"
+
 
 const app = express();
 
