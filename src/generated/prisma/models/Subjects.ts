@@ -29,13 +29,11 @@ export type AggregateSubjects = {
 export type SubjectsAvgAggregateOutputType = {
   id: number | null
   departmentId: number | null
-  classId: number | null
 }
 
 export type SubjectsSumAggregateOutputType = {
   id: number | null
   departmentId: number | null
-  classId: number | null
 }
 
 export type SubjectsMinAggregateOutputType = {
@@ -46,7 +44,6 @@ export type SubjectsMinAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   departmentId: number | null
-  classId: number | null
 }
 
 export type SubjectsMaxAggregateOutputType = {
@@ -57,7 +54,6 @@ export type SubjectsMaxAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   departmentId: number | null
-  classId: number | null
 }
 
 export type SubjectsCountAggregateOutputType = {
@@ -68,7 +64,6 @@ export type SubjectsCountAggregateOutputType = {
   createdAt: number
   updatedAt: number
   departmentId: number
-  classId: number
   _all: number
 }
 
@@ -76,13 +71,11 @@ export type SubjectsCountAggregateOutputType = {
 export type SubjectsAvgAggregateInputType = {
   id?: true
   departmentId?: true
-  classId?: true
 }
 
 export type SubjectsSumAggregateInputType = {
   id?: true
   departmentId?: true
-  classId?: true
 }
 
 export type SubjectsMinAggregateInputType = {
@@ -93,7 +86,6 @@ export type SubjectsMinAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   departmentId?: true
-  classId?: true
 }
 
 export type SubjectsMaxAggregateInputType = {
@@ -104,7 +96,6 @@ export type SubjectsMaxAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   departmentId?: true
-  classId?: true
 }
 
 export type SubjectsCountAggregateInputType = {
@@ -115,7 +106,6 @@ export type SubjectsCountAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   departmentId?: true
-  classId?: true
   _all?: true
 }
 
@@ -213,7 +203,6 @@ export type SubjectsGroupByOutputType = {
   createdAt: Date
   updatedAt: Date
   departmentId: number
-  classId: number | null
   _count: SubjectsCountAggregateOutputType | null
   _avg: SubjectsAvgAggregateOutputType | null
   _sum: SubjectsSumAggregateOutputType | null
@@ -247,7 +236,6 @@ export type SubjectsWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Subjects"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Subjects"> | Date | string
   departmentId?: Prisma.IntFilter<"Subjects"> | number
-  classId?: Prisma.IntNullableFilter<"Subjects"> | number | null
   department?: Prisma.XOR<Prisma.DepartmentsScalarRelationFilter, Prisma.DepartmentsWhereInput>
   classes?: Prisma.ClassesListRelationFilter
 }
@@ -260,7 +248,6 @@ export type SubjectsOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   departmentId?: Prisma.SortOrder
-  classId?: Prisma.SortOrderInput | Prisma.SortOrder
   department?: Prisma.DepartmentsOrderByWithRelationInput
   classes?: Prisma.ClassesOrderByRelationAggregateInput
 }
@@ -268,7 +255,6 @@ export type SubjectsOrderByWithRelationInput = {
 export type SubjectsWhereUniqueInput = Prisma.AtLeast<{
   id?: number
   code?: string
-  classId?: number
   AND?: Prisma.SubjectsWhereInput | Prisma.SubjectsWhereInput[]
   OR?: Prisma.SubjectsWhereInput[]
   NOT?: Prisma.SubjectsWhereInput | Prisma.SubjectsWhereInput[]
@@ -279,7 +265,7 @@ export type SubjectsWhereUniqueInput = Prisma.AtLeast<{
   departmentId?: Prisma.IntFilter<"Subjects"> | number
   department?: Prisma.XOR<Prisma.DepartmentsScalarRelationFilter, Prisma.DepartmentsWhereInput>
   classes?: Prisma.ClassesListRelationFilter
-}, "id" | "code" | "classId">
+}, "id" | "code">
 
 export type SubjectsOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -289,7 +275,6 @@ export type SubjectsOrderByWithAggregationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   departmentId?: Prisma.SortOrder
-  classId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.SubjectsCountOrderByAggregateInput
   _avg?: Prisma.SubjectsAvgOrderByAggregateInput
   _max?: Prisma.SubjectsMaxOrderByAggregateInput
@@ -308,7 +293,6 @@ export type SubjectsScalarWhereWithAggregatesInput = {
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Subjects"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Subjects"> | Date | string
   departmentId?: Prisma.IntWithAggregatesFilter<"Subjects"> | number
-  classId?: Prisma.IntNullableWithAggregatesFilter<"Subjects"> | number | null
 }
 
 export type SubjectsCreateInput = {
@@ -317,7 +301,6 @@ export type SubjectsCreateInput = {
   description?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  classId?: number | null
   department: Prisma.DepartmentsCreateNestedOneWithoutSubjectsInput
   classes?: Prisma.ClassesCreateNestedManyWithoutSubjectInput
 }
@@ -330,7 +313,6 @@ export type SubjectsUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   departmentId: number
-  classId?: number | null
   classes?: Prisma.ClassesUncheckedCreateNestedManyWithoutSubjectInput
 }
 
@@ -340,7 +322,6 @@ export type SubjectsUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  classId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   department?: Prisma.DepartmentsUpdateOneRequiredWithoutSubjectsNestedInput
   classes?: Prisma.ClassesUpdateManyWithoutSubjectNestedInput
 }
@@ -353,7 +334,6 @@ export type SubjectsUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   departmentId?: Prisma.IntFieldUpdateOperationsInput | number
-  classId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   classes?: Prisma.ClassesUncheckedUpdateManyWithoutSubjectNestedInput
 }
 
@@ -365,7 +345,6 @@ export type SubjectsCreateManyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   departmentId: number
-  classId?: number | null
 }
 
 export type SubjectsUpdateManyMutationInput = {
@@ -374,7 +353,6 @@ export type SubjectsUpdateManyMutationInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  classId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type SubjectsUncheckedUpdateManyInput = {
@@ -385,7 +363,6 @@ export type SubjectsUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   departmentId?: Prisma.IntFieldUpdateOperationsInput | number
-  classId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type SubjectsListRelationFilter = {
@@ -406,13 +383,11 @@ export type SubjectsCountOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   departmentId?: Prisma.SortOrder
-  classId?: Prisma.SortOrder
 }
 
 export type SubjectsAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   departmentId?: Prisma.SortOrder
-  classId?: Prisma.SortOrder
 }
 
 export type SubjectsMaxOrderByAggregateInput = {
@@ -423,7 +398,6 @@ export type SubjectsMaxOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   departmentId?: Prisma.SortOrder
-  classId?: Prisma.SortOrder
 }
 
 export type SubjectsMinOrderByAggregateInput = {
@@ -434,13 +408,11 @@ export type SubjectsMinOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   departmentId?: Prisma.SortOrder
-  classId?: Prisma.SortOrder
 }
 
 export type SubjectsSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   departmentId?: Prisma.SortOrder
-  classId?: Prisma.SortOrder
 }
 
 export type SubjectsScalarRelationFilter = {
@@ -490,14 +462,6 @@ export type SubjectsUncheckedUpdateManyWithoutDepartmentNestedInput = {
   deleteMany?: Prisma.SubjectsScalarWhereInput | Prisma.SubjectsScalarWhereInput[]
 }
 
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type SubjectsCreateNestedOneWithoutClassesInput = {
   create?: Prisma.XOR<Prisma.SubjectsCreateWithoutClassesInput, Prisma.SubjectsUncheckedCreateWithoutClassesInput>
   connectOrCreate?: Prisma.SubjectsCreateOrConnectWithoutClassesInput
@@ -518,7 +482,6 @@ export type SubjectsCreateWithoutDepartmentInput = {
   description?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  classId?: number | null
   classes?: Prisma.ClassesCreateNestedManyWithoutSubjectInput
 }
 
@@ -529,7 +492,6 @@ export type SubjectsUncheckedCreateWithoutDepartmentInput = {
   description?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  classId?: number | null
   classes?: Prisma.ClassesUncheckedCreateNestedManyWithoutSubjectInput
 }
 
@@ -570,7 +532,6 @@ export type SubjectsScalarWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Subjects"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Subjects"> | Date | string
   departmentId?: Prisma.IntFilter<"Subjects"> | number
-  classId?: Prisma.IntNullableFilter<"Subjects"> | number | null
 }
 
 export type SubjectsCreateWithoutClassesInput = {
@@ -579,7 +540,6 @@ export type SubjectsCreateWithoutClassesInput = {
   description?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  classId?: number | null
   department: Prisma.DepartmentsCreateNestedOneWithoutSubjectsInput
 }
 
@@ -591,7 +551,6 @@ export type SubjectsUncheckedCreateWithoutClassesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   departmentId: number
-  classId?: number | null
 }
 
 export type SubjectsCreateOrConnectWithoutClassesInput = {
@@ -616,7 +575,6 @@ export type SubjectsUpdateWithoutClassesInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  classId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   department?: Prisma.DepartmentsUpdateOneRequiredWithoutSubjectsNestedInput
 }
 
@@ -628,7 +586,6 @@ export type SubjectsUncheckedUpdateWithoutClassesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   departmentId?: Prisma.IntFieldUpdateOperationsInput | number
-  classId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type SubjectsCreateManyDepartmentInput = {
@@ -638,7 +595,6 @@ export type SubjectsCreateManyDepartmentInput = {
   description?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  classId?: number | null
 }
 
 export type SubjectsUpdateWithoutDepartmentInput = {
@@ -647,7 +603,6 @@ export type SubjectsUpdateWithoutDepartmentInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  classId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   classes?: Prisma.ClassesUpdateManyWithoutSubjectNestedInput
 }
 
@@ -658,7 +613,6 @@ export type SubjectsUncheckedUpdateWithoutDepartmentInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  classId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   classes?: Prisma.ClassesUncheckedUpdateManyWithoutSubjectNestedInput
 }
 
@@ -669,7 +623,6 @@ export type SubjectsUncheckedUpdateManyWithoutDepartmentInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  classId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 
@@ -711,7 +664,6 @@ export type SubjectsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   createdAt?: boolean
   updatedAt?: boolean
   departmentId?: boolean
-  classId?: boolean
   department?: boolean | Prisma.DepartmentsDefaultArgs<ExtArgs>
   classes?: boolean | Prisma.Subjects$classesArgs<ExtArgs>
   _count?: boolean | Prisma.SubjectsCountOutputTypeDefaultArgs<ExtArgs>
@@ -725,7 +677,6 @@ export type SubjectsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   createdAt?: boolean
   updatedAt?: boolean
   departmentId?: boolean
-  classId?: boolean
   department?: boolean | Prisma.DepartmentsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["subjects"]>
 
@@ -737,7 +688,6 @@ export type SubjectsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   createdAt?: boolean
   updatedAt?: boolean
   departmentId?: boolean
-  classId?: boolean
   department?: boolean | Prisma.DepartmentsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["subjects"]>
 
@@ -749,10 +699,9 @@ export type SubjectsSelectScalar = {
   createdAt?: boolean
   updatedAt?: boolean
   departmentId?: boolean
-  classId?: boolean
 }
 
-export type SubjectsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "name" | "description" | "createdAt" | "updatedAt" | "departmentId" | "classId", ExtArgs["result"]["subjects"]>
+export type SubjectsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "name" | "description" | "createdAt" | "updatedAt" | "departmentId", ExtArgs["result"]["subjects"]>
 export type SubjectsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   department?: boolean | Prisma.DepartmentsDefaultArgs<ExtArgs>
   classes?: boolean | Prisma.Subjects$classesArgs<ExtArgs>
@@ -779,7 +728,6 @@ export type $SubjectsPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     createdAt: Date
     updatedAt: Date
     departmentId: number
-    classId: number | null
   }, ExtArgs["result"]["subjects"]>
   composites: {}
 }
@@ -1212,7 +1160,6 @@ export interface SubjectsFieldRefs {
   readonly createdAt: Prisma.FieldRef<"Subjects", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Subjects", 'DateTime'>
   readonly departmentId: Prisma.FieldRef<"Subjects", 'Int'>
-  readonly classId: Prisma.FieldRef<"Subjects", 'Int'>
 }
     
 

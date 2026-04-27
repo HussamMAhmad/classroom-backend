@@ -31,13 +31,13 @@ model Subjects {
 
 model Classes {
   id              Int           @id @default(autoincrement())
-  invite          String        @unique
+  inviteCode      String        @unique
   name            String
   bannerCldPublic String
   bannerUrl       String
   description     String
   capacity        Int           @default(50)
-  status          Status        @default(ACTIVE)
+  status          Status        @default(active)
   schedules       Json          @default("[]")
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
@@ -76,7 +76,7 @@ model User {
   sessions       Session[]
   accounts       Account[]
   imageCldPublic String?
-  role           Role      @default(STUDENT)
+  role           Role      @default(student)
 
   teacher     Classes[]
   enrollments Enrollments[]
@@ -134,13 +134,13 @@ model Verification {
 }
 
 enum Role {
-  STUDENT
-  TEACHER
-  ADMIN
+  student
+  teacher
+  admin
 }
 
 enum Status {
-  ACTIVE
-  INACTIVE
-  ARCHIVED
+  active
+  inactive
+  archived
 }

@@ -10,18 +10,18 @@
 */
 
 export const Role = {
-  STUDENT: 'STUDENT',
-  TEACHER: 'TEACHER',
-  ADMIN: 'ADMIN'
+  student: 'student',
+  teacher: 'teacher',
+  admin: 'admin'
 } as const
 
 export type Role = (typeof Role)[keyof typeof Role]
 
 
 export const Status = {
-  ACTIVE: 'ACTIVE',
-  INACTIVE: 'INACTIVE',
-  ARCHIVED: 'ARCHIVED'
+  active: 'active',
+  inactive: 'inactive',
+  archived: 'archived'
 } as const
 
 export type Status = (typeof Status)[keyof typeof Status]

@@ -1061,8 +1061,7 @@ export const SubjectsScalarFieldEnum = {
   description: 'description',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  departmentId: 'departmentId',
-  classId: 'classId'
+  departmentId: 'departmentId'
 } as const
 
 export type SubjectsScalarFieldEnum = (typeof SubjectsScalarFieldEnum)[keyof typeof SubjectsScalarFieldEnum]
@@ -1070,9 +1069,10 @@ export type SubjectsScalarFieldEnum = (typeof SubjectsScalarFieldEnum)[keyof typ
 
 export const ClassesScalarFieldEnum = {
   id: 'id',
-  invite: 'invite',
+  inviteCode: 'inviteCode',
   name: 'name',
   bannerCldPublic: 'bannerCldPublic',
+  bannerUrl: 'bannerUrl',
   description: 'description',
   capacity: 'capacity',
   status: 'status',

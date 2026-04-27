@@ -24,7 +24,7 @@ const securityMiddleware = async (
         message = "User request limit exceeded (10 pre minute) . please wait.";
         break;
       default:
-        limit = 5;
+        limit = 20;
         message =
           "Guest request limit exceeded (5 per minute). please sign up for higher limits";
         break;
@@ -46,7 +46,6 @@ const securityMiddleware = async (
         remoteAddress: req.socket.remoteAddress ?? req.ip ?? "0.0.0.0",
       },
     };
-    console.log("arcjet Request:" , arcjetRequest); 
     const decision = await client.protect(arcjetRequest);
 
     if (decision.isDenied() && decision.reason.isBot()) {

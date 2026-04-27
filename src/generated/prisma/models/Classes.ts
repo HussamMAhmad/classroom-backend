@@ -40,9 +40,10 @@ export type ClassesSumAggregateOutputType = {
 
 export type ClassesMinAggregateOutputType = {
   id: number | null
-  invite: string | null
+  inviteCode: string | null
   name: string | null
   bannerCldPublic: string | null
+  bannerUrl: string | null
   description: string | null
   capacity: number | null
   status: $Enums.Status | null
@@ -54,9 +55,10 @@ export type ClassesMinAggregateOutputType = {
 
 export type ClassesMaxAggregateOutputType = {
   id: number | null
-  invite: string | null
+  inviteCode: string | null
   name: string | null
   bannerCldPublic: string | null
+  bannerUrl: string | null
   description: string | null
   capacity: number | null
   status: $Enums.Status | null
@@ -68,9 +70,10 @@ export type ClassesMaxAggregateOutputType = {
 
 export type ClassesCountAggregateOutputType = {
   id: number
-  invite: number
+  inviteCode: number
   name: number
   bannerCldPublic: number
+  bannerUrl: number
   description: number
   capacity: number
   status: number
@@ -97,9 +100,10 @@ export type ClassesSumAggregateInputType = {
 
 export type ClassesMinAggregateInputType = {
   id?: true
-  invite?: true
+  inviteCode?: true
   name?: true
   bannerCldPublic?: true
+  bannerUrl?: true
   description?: true
   capacity?: true
   status?: true
@@ -111,9 +115,10 @@ export type ClassesMinAggregateInputType = {
 
 export type ClassesMaxAggregateInputType = {
   id?: true
-  invite?: true
+  inviteCode?: true
   name?: true
   bannerCldPublic?: true
+  bannerUrl?: true
   description?: true
   capacity?: true
   status?: true
@@ -125,9 +130,10 @@ export type ClassesMaxAggregateInputType = {
 
 export type ClassesCountAggregateInputType = {
   id?: true
-  invite?: true
+  inviteCode?: true
   name?: true
   bannerCldPublic?: true
+  bannerUrl?: true
   description?: true
   capacity?: true
   status?: true
@@ -227,9 +233,10 @@ export type ClassesGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type ClassesGroupByOutputType = {
   id: number
-  invite: string
+  inviteCode: string
   name: string
   bannerCldPublic: string
+  bannerUrl: string
   description: string
   capacity: number
   status: $Enums.Status
@@ -265,9 +272,10 @@ export type ClassesWhereInput = {
   OR?: Prisma.ClassesWhereInput[]
   NOT?: Prisma.ClassesWhereInput | Prisma.ClassesWhereInput[]
   id?: Prisma.IntFilter<"Classes"> | number
-  invite?: Prisma.StringFilter<"Classes"> | string
+  inviteCode?: Prisma.StringFilter<"Classes"> | string
   name?: Prisma.StringFilter<"Classes"> | string
   bannerCldPublic?: Prisma.StringFilter<"Classes"> | string
+  bannerUrl?: Prisma.StringFilter<"Classes"> | string
   description?: Prisma.StringFilter<"Classes"> | string
   capacity?: Prisma.IntFilter<"Classes"> | number
   status?: Prisma.EnumStatusFilter<"Classes"> | $Enums.Status
@@ -283,9 +291,10 @@ export type ClassesWhereInput = {
 
 export type ClassesOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  invite?: Prisma.SortOrder
+  inviteCode?: Prisma.SortOrder
   name?: Prisma.SortOrder
   bannerCldPublic?: Prisma.SortOrder
+  bannerUrl?: Prisma.SortOrder
   description?: Prisma.SortOrder
   capacity?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -301,12 +310,13 @@ export type ClassesOrderByWithRelationInput = {
 
 export type ClassesWhereUniqueInput = Prisma.AtLeast<{
   id?: number
-  invite?: string
+  inviteCode?: string
   AND?: Prisma.ClassesWhereInput | Prisma.ClassesWhereInput[]
   OR?: Prisma.ClassesWhereInput[]
   NOT?: Prisma.ClassesWhereInput | Prisma.ClassesWhereInput[]
   name?: Prisma.StringFilter<"Classes"> | string
   bannerCldPublic?: Prisma.StringFilter<"Classes"> | string
+  bannerUrl?: Prisma.StringFilter<"Classes"> | string
   description?: Prisma.StringFilter<"Classes"> | string
   capacity?: Prisma.IntFilter<"Classes"> | number
   status?: Prisma.EnumStatusFilter<"Classes"> | $Enums.Status
@@ -318,13 +328,14 @@ export type ClassesWhereUniqueInput = Prisma.AtLeast<{
   subject?: Prisma.XOR<Prisma.SubjectsScalarRelationFilter, Prisma.SubjectsWhereInput>
   teacher?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   enrollments?: Prisma.EnrollmentsListRelationFilter
-}, "id" | "invite">
+}, "id" | "inviteCode">
 
 export type ClassesOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  invite?: Prisma.SortOrder
+  inviteCode?: Prisma.SortOrder
   name?: Prisma.SortOrder
   bannerCldPublic?: Prisma.SortOrder
+  bannerUrl?: Prisma.SortOrder
   description?: Prisma.SortOrder
   capacity?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -345,9 +356,10 @@ export type ClassesScalarWhereWithAggregatesInput = {
   OR?: Prisma.ClassesScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ClassesScalarWhereWithAggregatesInput | Prisma.ClassesScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Classes"> | number
-  invite?: Prisma.StringWithAggregatesFilter<"Classes"> | string
+  inviteCode?: Prisma.StringWithAggregatesFilter<"Classes"> | string
   name?: Prisma.StringWithAggregatesFilter<"Classes"> | string
   bannerCldPublic?: Prisma.StringWithAggregatesFilter<"Classes"> | string
+  bannerUrl?: Prisma.StringWithAggregatesFilter<"Classes"> | string
   description?: Prisma.StringWithAggregatesFilter<"Classes"> | string
   capacity?: Prisma.IntWithAggregatesFilter<"Classes"> | number
   status?: Prisma.EnumStatusWithAggregatesFilter<"Classes"> | $Enums.Status
@@ -359,9 +371,10 @@ export type ClassesScalarWhereWithAggregatesInput = {
 }
 
 export type ClassesCreateInput = {
-  invite: string
+  inviteCode: string
   name: string
   bannerCldPublic: string
+  bannerUrl: string
   description: string
   capacity?: number
   status?: $Enums.Status
@@ -375,9 +388,10 @@ export type ClassesCreateInput = {
 
 export type ClassesUncheckedCreateInput = {
   id?: number
-  invite: string
+  inviteCode: string
   name: string
   bannerCldPublic: string
+  bannerUrl: string
   description: string
   capacity?: number
   status?: $Enums.Status
@@ -390,9 +404,10 @@ export type ClassesUncheckedCreateInput = {
 }
 
 export type ClassesUpdateInput = {
-  invite?: Prisma.StringFieldUpdateOperationsInput | string
+  inviteCode?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   bannerCldPublic?: Prisma.StringFieldUpdateOperationsInput | string
+  bannerUrl?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   capacity?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -406,9 +421,10 @@ export type ClassesUpdateInput = {
 
 export type ClassesUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  invite?: Prisma.StringFieldUpdateOperationsInput | string
+  inviteCode?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   bannerCldPublic?: Prisma.StringFieldUpdateOperationsInput | string
+  bannerUrl?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   capacity?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -422,9 +438,10 @@ export type ClassesUncheckedUpdateInput = {
 
 export type ClassesCreateManyInput = {
   id?: number
-  invite: string
+  inviteCode: string
   name: string
   bannerCldPublic: string
+  bannerUrl: string
   description: string
   capacity?: number
   status?: $Enums.Status
@@ -436,9 +453,10 @@ export type ClassesCreateManyInput = {
 }
 
 export type ClassesUpdateManyMutationInput = {
-  invite?: Prisma.StringFieldUpdateOperationsInput | string
+  inviteCode?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   bannerCldPublic?: Prisma.StringFieldUpdateOperationsInput | string
+  bannerUrl?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   capacity?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -449,9 +467,10 @@ export type ClassesUpdateManyMutationInput = {
 
 export type ClassesUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  invite?: Prisma.StringFieldUpdateOperationsInput | string
+  inviteCode?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   bannerCldPublic?: Prisma.StringFieldUpdateOperationsInput | string
+  bannerUrl?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   capacity?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -474,9 +493,10 @@ export type ClassesOrderByRelationAggregateInput = {
 
 export type ClassesCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  invite?: Prisma.SortOrder
+  inviteCode?: Prisma.SortOrder
   name?: Prisma.SortOrder
   bannerCldPublic?: Prisma.SortOrder
+  bannerUrl?: Prisma.SortOrder
   description?: Prisma.SortOrder
   capacity?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -495,9 +515,10 @@ export type ClassesAvgOrderByAggregateInput = {
 
 export type ClassesMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  invite?: Prisma.SortOrder
+  inviteCode?: Prisma.SortOrder
   name?: Prisma.SortOrder
   bannerCldPublic?: Prisma.SortOrder
+  bannerUrl?: Prisma.SortOrder
   description?: Prisma.SortOrder
   capacity?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -509,9 +530,10 @@ export type ClassesMaxOrderByAggregateInput = {
 
 export type ClassesMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  invite?: Prisma.SortOrder
+  inviteCode?: Prisma.SortOrder
   name?: Prisma.SortOrder
   bannerCldPublic?: Prisma.SortOrder
+  bannerUrl?: Prisma.SortOrder
   description?: Prisma.SortOrder
   capacity?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -635,9 +657,10 @@ export type ClassesUncheckedUpdateManyWithoutTeacherNestedInput = {
 }
 
 export type ClassesCreateWithoutSubjectInput = {
-  invite: string
+  inviteCode: string
   name: string
   bannerCldPublic: string
+  bannerUrl: string
   description: string
   capacity?: number
   status?: $Enums.Status
@@ -650,9 +673,10 @@ export type ClassesCreateWithoutSubjectInput = {
 
 export type ClassesUncheckedCreateWithoutSubjectInput = {
   id?: number
-  invite: string
+  inviteCode: string
   name: string
   bannerCldPublic: string
+  bannerUrl: string
   description: string
   capacity?: number
   status?: $Enums.Status
@@ -694,9 +718,10 @@ export type ClassesScalarWhereInput = {
   OR?: Prisma.ClassesScalarWhereInput[]
   NOT?: Prisma.ClassesScalarWhereInput | Prisma.ClassesScalarWhereInput[]
   id?: Prisma.IntFilter<"Classes"> | number
-  invite?: Prisma.StringFilter<"Classes"> | string
+  inviteCode?: Prisma.StringFilter<"Classes"> | string
   name?: Prisma.StringFilter<"Classes"> | string
   bannerCldPublic?: Prisma.StringFilter<"Classes"> | string
+  bannerUrl?: Prisma.StringFilter<"Classes"> | string
   description?: Prisma.StringFilter<"Classes"> | string
   capacity?: Prisma.IntFilter<"Classes"> | number
   status?: Prisma.EnumStatusFilter<"Classes"> | $Enums.Status
@@ -708,9 +733,10 @@ export type ClassesScalarWhereInput = {
 }
 
 export type ClassesCreateWithoutEnrollmentsInput = {
-  invite: string
+  inviteCode: string
   name: string
   bannerCldPublic: string
+  bannerUrl: string
   description: string
   capacity?: number
   status?: $Enums.Status
@@ -723,9 +749,10 @@ export type ClassesCreateWithoutEnrollmentsInput = {
 
 export type ClassesUncheckedCreateWithoutEnrollmentsInput = {
   id?: number
-  invite: string
+  inviteCode: string
   name: string
   bannerCldPublic: string
+  bannerUrl: string
   description: string
   capacity?: number
   status?: $Enums.Status
@@ -753,9 +780,10 @@ export type ClassesUpdateToOneWithWhereWithoutEnrollmentsInput = {
 }
 
 export type ClassesUpdateWithoutEnrollmentsInput = {
-  invite?: Prisma.StringFieldUpdateOperationsInput | string
+  inviteCode?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   bannerCldPublic?: Prisma.StringFieldUpdateOperationsInput | string
+  bannerUrl?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   capacity?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -768,9 +796,10 @@ export type ClassesUpdateWithoutEnrollmentsInput = {
 
 export type ClassesUncheckedUpdateWithoutEnrollmentsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  invite?: Prisma.StringFieldUpdateOperationsInput | string
+  inviteCode?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   bannerCldPublic?: Prisma.StringFieldUpdateOperationsInput | string
+  bannerUrl?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   capacity?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -782,9 +811,10 @@ export type ClassesUncheckedUpdateWithoutEnrollmentsInput = {
 }
 
 export type ClassesCreateWithoutTeacherInput = {
-  invite: string
+  inviteCode: string
   name: string
   bannerCldPublic: string
+  bannerUrl: string
   description: string
   capacity?: number
   status?: $Enums.Status
@@ -797,9 +827,10 @@ export type ClassesCreateWithoutTeacherInput = {
 
 export type ClassesUncheckedCreateWithoutTeacherInput = {
   id?: number
-  invite: string
+  inviteCode: string
   name: string
   bannerCldPublic: string
+  bannerUrl: string
   description: string
   capacity?: number
   status?: $Enums.Status
@@ -838,9 +869,10 @@ export type ClassesUpdateManyWithWhereWithoutTeacherInput = {
 
 export type ClassesCreateManySubjectInput = {
   id?: number
-  invite: string
+  inviteCode: string
   name: string
   bannerCldPublic: string
+  bannerUrl: string
   description: string
   capacity?: number
   status?: $Enums.Status
@@ -851,9 +883,10 @@ export type ClassesCreateManySubjectInput = {
 }
 
 export type ClassesUpdateWithoutSubjectInput = {
-  invite?: Prisma.StringFieldUpdateOperationsInput | string
+  inviteCode?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   bannerCldPublic?: Prisma.StringFieldUpdateOperationsInput | string
+  bannerUrl?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   capacity?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -866,9 +899,10 @@ export type ClassesUpdateWithoutSubjectInput = {
 
 export type ClassesUncheckedUpdateWithoutSubjectInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  invite?: Prisma.StringFieldUpdateOperationsInput | string
+  inviteCode?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   bannerCldPublic?: Prisma.StringFieldUpdateOperationsInput | string
+  bannerUrl?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   capacity?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -881,9 +915,10 @@ export type ClassesUncheckedUpdateWithoutSubjectInput = {
 
 export type ClassesUncheckedUpdateManyWithoutSubjectInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  invite?: Prisma.StringFieldUpdateOperationsInput | string
+  inviteCode?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   bannerCldPublic?: Prisma.StringFieldUpdateOperationsInput | string
+  bannerUrl?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   capacity?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -895,9 +930,10 @@ export type ClassesUncheckedUpdateManyWithoutSubjectInput = {
 
 export type ClassesCreateManyTeacherInput = {
   id?: number
-  invite: string
+  inviteCode: string
   name: string
   bannerCldPublic: string
+  bannerUrl: string
   description: string
   capacity?: number
   status?: $Enums.Status
@@ -908,9 +944,10 @@ export type ClassesCreateManyTeacherInput = {
 }
 
 export type ClassesUpdateWithoutTeacherInput = {
-  invite?: Prisma.StringFieldUpdateOperationsInput | string
+  inviteCode?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   bannerCldPublic?: Prisma.StringFieldUpdateOperationsInput | string
+  bannerUrl?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   capacity?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -923,9 +960,10 @@ export type ClassesUpdateWithoutTeacherInput = {
 
 export type ClassesUncheckedUpdateWithoutTeacherInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  invite?: Prisma.StringFieldUpdateOperationsInput | string
+  inviteCode?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   bannerCldPublic?: Prisma.StringFieldUpdateOperationsInput | string
+  bannerUrl?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   capacity?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -938,9 +976,10 @@ export type ClassesUncheckedUpdateWithoutTeacherInput = {
 
 export type ClassesUncheckedUpdateManyWithoutTeacherInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  invite?: Prisma.StringFieldUpdateOperationsInput | string
+  inviteCode?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   bannerCldPublic?: Prisma.StringFieldUpdateOperationsInput | string
+  bannerUrl?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   capacity?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -983,9 +1022,10 @@ export type ClassesCountOutputTypeCountEnrollmentsArgs<ExtArgs extends runtime.T
 
 export type ClassesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  invite?: boolean
+  inviteCode?: boolean
   name?: boolean
   bannerCldPublic?: boolean
+  bannerUrl?: boolean
   description?: boolean
   capacity?: boolean
   status?: boolean
@@ -1002,9 +1042,10 @@ export type ClassesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 
 export type ClassesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  invite?: boolean
+  inviteCode?: boolean
   name?: boolean
   bannerCldPublic?: boolean
+  bannerUrl?: boolean
   description?: boolean
   capacity?: boolean
   status?: boolean
@@ -1019,9 +1060,10 @@ export type ClassesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
 
 export type ClassesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  invite?: boolean
+  inviteCode?: boolean
   name?: boolean
   bannerCldPublic?: boolean
+  bannerUrl?: boolean
   description?: boolean
   capacity?: boolean
   status?: boolean
@@ -1036,9 +1078,10 @@ export type ClassesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 
 export type ClassesSelectScalar = {
   id?: boolean
-  invite?: boolean
+  inviteCode?: boolean
   name?: boolean
   bannerCldPublic?: boolean
+  bannerUrl?: boolean
   description?: boolean
   capacity?: boolean
   status?: boolean
@@ -1049,7 +1092,7 @@ export type ClassesSelectScalar = {
   teacherId?: boolean
 }
 
-export type ClassesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "invite" | "name" | "bannerCldPublic" | "description" | "capacity" | "status" | "schedules" | "createdAt" | "updatedAt" | "subjectId" | "teacherId", ExtArgs["result"]["classes"]>
+export type ClassesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "inviteCode" | "name" | "bannerCldPublic" | "bannerUrl" | "description" | "capacity" | "status" | "schedules" | "createdAt" | "updatedAt" | "subjectId" | "teacherId", ExtArgs["result"]["classes"]>
 export type ClassesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   subject?: boolean | Prisma.SubjectsDefaultArgs<ExtArgs>
   teacher?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1074,9 +1117,10 @@ export type $ClassesPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    invite: string
+    inviteCode: string
     name: string
     bannerCldPublic: string
+    bannerUrl: string
     description: string
     capacity: number
     status: $Enums.Status
@@ -1512,9 +1556,10 @@ export interface Prisma__ClassesClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface ClassesFieldRefs {
   readonly id: Prisma.FieldRef<"Classes", 'Int'>
-  readonly invite: Prisma.FieldRef<"Classes", 'String'>
+  readonly inviteCode: Prisma.FieldRef<"Classes", 'String'>
   readonly name: Prisma.FieldRef<"Classes", 'String'>
   readonly bannerCldPublic: Prisma.FieldRef<"Classes", 'String'>
+  readonly bannerUrl: Prisma.FieldRef<"Classes", 'String'>
   readonly description: Prisma.FieldRef<"Classes", 'String'>
   readonly capacity: Prisma.FieldRef<"Classes", 'Int'>
   readonly status: Prisma.FieldRef<"Classes", 'Status'>
