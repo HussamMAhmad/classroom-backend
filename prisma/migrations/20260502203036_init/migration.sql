@@ -1,27 +1,44 @@
-/*
-  Warnings:
-
-  - A unique constraint covering the columns `[classId]` on the table `Subjects` will be added. If there are existing duplicate values, this will fail.
-
-*/
 -- CreateEnum
-CREATE TYPE "Role" AS ENUM ('STUDENT', 'TEACHER', 'ADMIN');
+CREATE TYPE "Role" AS ENUM ('student', 'teacher', 'admin');
 
 -- CreateEnum
-CREATE TYPE "Status" AS ENUM ('ACTIVE', 'INACTIVE', 'ARCHIVED');
+CREATE TYPE "Status" AS ENUM ('active', 'inactive', 'archived');
 
--- AlterTable
-ALTER TABLE "Subjects" ADD COLUMN     "classId" INTEGER;
+-- CreateTable
+CREATE TABLE "Departments" (
+    "id" SERIAL NOT NULL,
+    "code" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "description" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Departments_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Subjects" (
+    "id" SERIAL NOT NULL,
+    "code" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "description" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "departmentId" INTEGER NOT NULL,
+
+    CONSTRAINT "Subjects_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "classes" (
     "id" SERIAL NOT NULL,
-    "invite" TEXT NOT NULL,
+    "inviteCode" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "bannerCldPublic" TEXT NOT NULL,
+    "bannerUrl" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "capacity" INTEGER NOT NULL DEFAULT 50,
-    "status" "Status" NOT NULL DEFAULT 'ACTIVE',
+    "status" "Status" NOT NULL DEFAULT 'active',
     "schedules" JSONB NOT NULL DEFAULT '[]',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -50,7 +67,7 @@ CREATE TABLE "user" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "imageCldPublic" TEXT,
-    "role" "Role" NOT NULL DEFAULT 'STUDENT',
+    "role" "Role" NOT NULL DEFAULT 'student',
 
     CONSTRAINT "user_pkey" PRIMARY KEY ("id")
 );
@@ -101,7 +118,13 @@ CREATE TABLE "verification" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "classes_invite_key" ON "classes"("invite");
+CREATE UNIQUE INDEX "Departments_code_key" ON "Departments"("code");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Subjects_code_key" ON "Subjects"("code");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "classes_inviteCode_key" ON "classes"("inviteCode");
 
 -- CreateIndex
 CREATE INDEX "classes_subject_id_idx" ON "classes"("subject_id");
@@ -133,8 +156,8 @@ CREATE INDEX "account_userId_idx" ON "account"("userId");
 -- CreateIndex
 CREATE INDEX "verification_identifier_idx" ON "verification"("identifier");
 
--- CreateIndex
-CREATE UNIQUE INDEX "Subjects_classId_key" ON "Subjects"("classId");
+-- AddForeignKey
+ALTER TABLE "Subjects" ADD CONSTRAINT "Subjects_departmentId_fkey" FOREIGN KEY ("departmentId") REFERENCES "Departments"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "classes" ADD CONSTRAINT "classes_subject_id_fkey" FOREIGN KEY ("subject_id") REFERENCES "Subjects"("id") ON DELETE CASCADE ON UPDATE CASCADE;

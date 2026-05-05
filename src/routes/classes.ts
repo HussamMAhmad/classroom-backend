@@ -38,11 +38,14 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const { search, limit = "10", page = "1" } = req.query;
+    const { search, subject, teacher, limit = "10", page = "1" } = req.query;
+
     const currentLimit = Number(limit);
     const currentPage = Number(page);
+
     console.log("the limit is : ", currentLimit);
     console.log("the page is : ", currentPage);
+
     if (
       currentPage < 1 ||
       !Number.isInteger(currentPage) ||
@@ -56,10 +59,25 @@ router.get("/", async (req, res) => {
     const limitPerPage = Math.min(currentLimit);
     const offSet = (currentPage - 1) * limitPerPage;
     let whereClause: any = {};
+
     if (search) {
       const searchQuery = String(search);
-      whereClause = {
-        name: { contains: searchQuery, mode: "insensitive" },
+      whereClause.OR = [
+        {name: { contains: searchQuery, mode: "insensitive" }},
+        {inviteCode: { contains: searchQuery }},
+      ];
+    }
+
+    if (subject) {
+      const subjectQuery = String(subject);
+      whereClause.subject = {
+        name: { contains: subjectQuery, mode: "insensitive" },
+      };
+    }
+    if (teacher) {
+      const teacherQuery = String(teacher);
+      whereClause.teacher = {
+        name: { contains: teacherQuery, mode: "insensitive" },
       };
     }
     const [result, count] = await Promise.all([
@@ -71,7 +89,11 @@ router.get("/", async (req, res) => {
           createdAt: "desc",
         },
         include: {
-          subject: true,
+          subject: {
+            include: {
+              department: true,
+            },
+          },
           teacher: true,
         },
       }),

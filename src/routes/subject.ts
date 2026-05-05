@@ -8,11 +8,11 @@ SubjectRouter.get("/", async (req, res) => {
   try {
     console.log("Getting subjects with query:", req.query);
 
-    const { search  , department, page = "1", limit = "10" } = req.query;
+    const { search, department, page = "1", limit = "10" } = req.query;
 
     const currentPage = Number(page);
     const requestedLimit = Number(limit);
-    
+
     if (
       !Number.isInteger(currentPage) ||
       currentPage < 1 ||
@@ -37,7 +37,6 @@ SubjectRouter.get("/", async (req, res) => {
         { code: { contains: searchQuery, mode: "insensitive" } },
       ];
     }
-
     if (department) {
       whereClause.department = {
         name: { contains: String(department), mode: "insensitive" },
