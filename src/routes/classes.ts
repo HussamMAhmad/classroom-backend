@@ -21,11 +21,9 @@ router.post("/", async (req, res) => {
         schedules: [],
       },
     });
-
     if (!classeCreate) {
       throw Error;
     }
-
     res.status(201).json({
       message: "Class created succesfully",
       data: classeCreate,
@@ -41,13 +39,10 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const { search, limit = "10", page = "1" } = req.query;
-
     const currentLimit = Number(limit);
     const currentPage = Number(page);
-
-    console.log("the limit is : " , currentLimit);
-    console.log("the page is : " , currentPage); 
-
+    console.log("the limit is : ", currentLimit);
+    console.log("the page is : ", currentPage);
     if (
       currentPage < 1 ||
       !Number.isInteger(currentPage) ||
@@ -58,13 +53,9 @@ router.get("/", async (req, res) => {
         message: "page and limit must be positive integer",
       });
     }
-
     const limitPerPage = Math.min(currentLimit);
-
     const offSet = (currentPage - 1) * limitPerPage;
-
     let whereClause: any = {};
-
     if (search) {
       const searchQuery = String(search);
       whereClause = {
@@ -88,9 +79,7 @@ router.get("/", async (req, res) => {
         where: whereClause,
       }),
     ]);
-
     const totalCount = count ? count : 0;
-
     res.status(200).json({
       message: "Classes retrieved successfully",
       data: result,
@@ -105,8 +94,34 @@ router.get("/", async (req, res) => {
     console.log("faild to get data : ", e);
     res.status(403).json({
       message: "something went wrong with getting classes",
-      errore: e,
+      error: e,
     });
+  }
+});
+
+router.get("/:id", async (req, res) => {
+  try {
+    const classId = Number(req.params.id);
+    if (!Number.isFinite(classId))
+      return res.status(400).json({ error: "No class found." });
+    const classDatails = await prisma.classes.findFirst({
+      where: {
+        id: classId,
+      },
+      include: {
+        subject: {
+          include: {
+            department: true,
+          },
+        },
+        teacher: true,
+      },
+    });
+    if (!classDatails) return res.status(404).json({ error: "No class found" });
+    res.status(200).json({data : classDatails});
+  } catch (e) {
+    console.log("Error to get a class details");
+    res.status(500).json({ message: "something went wrong", error: e });
   }
 });
 
