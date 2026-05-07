@@ -6,7 +6,6 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   try {
     const { ...classe } = req.body;
-    console.log("classes is : ", classe);
     const classeCreate = await prisma.classes.create({
       data: {
         name: classe.name,

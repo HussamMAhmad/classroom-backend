@@ -1,15 +1,12 @@
 import express from "express";
 import { prisma } from "../config/prisma.js";
 
-const SubjectRouter = express.Router();
+const router = express.Router();
 
 // get all subjects with optional search , filtering and pagination
-SubjectRouter.get("/", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    console.log("Getting subjects with query:", req.query);
-
     const { search, department, page = "1", limit = "10" } = req.query;
-
     const currentPage = Number(page);
     const requestedLimit = Number(limit);
 
@@ -25,9 +22,7 @@ SubjectRouter.get("/", async (req, res) => {
     }
 
     const limitPerPage = Math.min(requestedLimit, 100);
-
     const offset = (currentPage - 1) * limitPerPage;
-
     let whereClause: any = {};
 
     if (search) {
@@ -73,4 +68,28 @@ SubjectRouter.get("/", async (req, res) => {
   }
 });
 
-export { SubjectRouter };
+router.post("/", async (req, res) => {
+  try {
+    const { ...subject } = req.body;
+    console.log("req body for subject : ", req.body);
+    const subjectCreate = await prisma.subjects.create({
+      data: {
+        name: subject.name,
+        description: subject.description,
+        departmentId: subject.department,
+        classes: { connect: subject.className.map((id : number) => ({ id: id })) },
+        code: Math.random().toString(36).substring(2, 9),
+      },
+    });
+    if (!subjectCreate) {
+      throw Error;
+    }
+    res
+      .status(200)
+      .json({ message: "Successfully fetch data", data: subjectCreate });
+  } catch (e) {
+    console.log("faild to fetch data", e);
+    res.status(500).json({ message: "Something went wrong", error: e });
+  }
+});
+export default router;
