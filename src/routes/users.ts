@@ -5,8 +5,8 @@ const usersRouter = express.Router();
 
 usersRouter.get("/", async (req, res) => {
   try {
-    const { search, role, page = "1", limit = "10" } = req.query;
-
+    const { name, search, role, page = "1", limit = "10" } = req.query;
+    console.log("name is : ", name);
     const currentPage = Number(page);
     const requestLimit = Number(limit);
 
@@ -36,12 +36,16 @@ usersRouter.get("/", async (req, res) => {
         { email: { contains: searchQuery, mode: "insensitive" } },
       ];
     }
-    console.log("role is : " , role); 
     if (role) {
       whereClause.AND.push({ role: String(role) });
     }
 
-    console.log("the role is : " , role); 
+    if (name) {
+      const nameQuery = String(name);
+      whereClause.AND.push({
+        name: { contains: nameQuery, mode: "insensitive" },
+      });
+    }
 
     const [result, count] = await Promise.all([
       prisma.user.findMany({

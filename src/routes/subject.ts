@@ -1,5 +1,6 @@
 import express from "express";
 import { prisma } from "../config/prisma.js";
+import { includes } from "better-auth";
 
 const router = express.Router();
 
@@ -51,7 +52,6 @@ router.get("/", async (req, res) => {
     ]);
 
     const totalcount = count ? count : 0;
-
     res.status(200).json({
       message: "Subjects retrieved successfully",
       data: result,
@@ -68,6 +68,28 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  try {
+    const subjectId = Number(req.params.id);
+    if (!Number.isFinite(subjectId))
+      return res.status(400).json({ error: "No class found." });
+    const subject = await prisma.subjects.findFirst({
+      where: {
+        id: subjectId,
+      },
+      include: {
+        classes: true,
+      },
+    });
+
+    if (!subject) throw Error;
+    res.status(200).json({ message: "successfully fetch data", data: subject });
+  } catch (e) {
+    console.log("faild to fetch data", e);
+    res.status(500).json({ message: "Something went wrong", error: e });
+  }
+});
+
 router.post("/", async (req, res) => {
   try {
     const { ...subject } = req.body;
@@ -77,7 +99,9 @@ router.post("/", async (req, res) => {
         name: subject.name,
         description: subject.description,
         departmentId: subject.department,
-        classes: { connect: subject.className.map((id : number) => ({ id: id })) },
+        classes: {
+          connect: subject.className.map((id: number) => ({ id: id })),
+        },
         code: Math.random().toString(36).substring(2, 9),
       },
     });
