@@ -6,7 +6,6 @@ const usersRouter = express.Router();
 usersRouter.get("/", async (req, res) => {
   try {
     const { name, search, role, page = "1", limit = "10" } = req.query;
-    console.log("name is : ", name);
     const currentPage = Number(page);
     const requestLimit = Number(limit);
 

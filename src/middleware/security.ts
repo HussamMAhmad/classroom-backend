@@ -1,6 +1,7 @@
 import aj from "../config/arcjet.js";
 import { Response, Request, NextFunction } from "express";
 import { ArcjetNodeRequest, slidingWindow } from "@arcjet/node";
+import { auth } from "../lib/auth.js";
 
 const securityMiddleware = async (
   req: Request,
@@ -8,25 +9,26 @@ const securityMiddleware = async (
   next: NextFunction,
 ) => {
   try {
-    const role: RateLimitRole = req.user?.role ?? "guest";
+    const session = await auth.api.getSession({ headers: req.headers });
+    const role: RateLimitRole = (session?.user?.role ?? "guest") as RateLimitRole;
 
     let limit: number;
     let message: string;
 
     switch (role) {
       case "admin":
-        limit = 20;
-        message = "Admin request limit exceuded (20 per minute) . slow down";
+        limit = 200;
+        message = "Admin request limit exceuded (200 per minute) . slow down";
         break;
       case "teacher":
       case "student":
-        limit = 10;
-        message = "User request limit exceeded (10 pre minute) . please wait.";
+        limit = 100;
+        message = "User request limit exceeded (100 per minute) . please wait.";
         break;
       default:
-        limit = 20;
+        limit = 30;
         message =
-          "Guest request limit exceeded (5 per minute). please sign up for higher limits";
+          "Guest request limit exceeded (30 per minute). please sign up for higher limits";
         break;
     }
 

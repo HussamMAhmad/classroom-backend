@@ -41,10 +41,6 @@ router.get("/", async (req, res) => {
 
     const currentLimit = Number(limit);
     const currentPage = Number(page);
-
-    console.log("the limit is : ", currentLimit);
-    console.log("the page is : ", currentPage);
-
     if (
       currentPage < 1 ||
       !Number.isInteger(currentPage) ||
