@@ -1,5 +1,3 @@
-// import AgentAPI from "apminsight";
-// AgentAPI.config();
 import express from "express";
 import { PORT, FRONTEND_URL } from "./config/env.js";
 import cors from "cors";
@@ -41,5 +39,9 @@ app.get("/api/health", (req, res) => {
 app.use("/", (req, res) => {
   res.send("Welcome to the Classroom Management API");
 });
+
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port http://localhost:${PORT}`);
+// });
 
 export default app;
