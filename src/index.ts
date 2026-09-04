@@ -1,5 +1,5 @@
-import AgentAPI from "apminsight";
-AgentAPI.config();
+// import AgentAPI from "apminsight";
+// AgentAPI.config();
 import express from "express";
 import { PORT, FRONTEND_URL } from "./config/env.js";
 import cors from "cors";
@@ -32,11 +32,14 @@ app.use("/api/subjects", SubjectRouter);
 app.use("/api/classes", classesRouter);
 app.use("/api/departments", departmentRouter);
 
-app.get('/api/health', (req, res) => {
-  res.status(200).json({ status: 'ok', message: 'Backend is running on Vercel!' });
+app.get("/api/health", (req, res) => {
+  res
+    .status(200)
+    .json({ status: "ok", message: "Backend is running on Vercel!" });
 });
 
 app.use("/", (req, res) => {
   res.send("Welcome to the Classroom Management API");
 });
 
+export default app;
