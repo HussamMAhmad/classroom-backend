@@ -32,10 +32,11 @@ app.use("/api/subjects", SubjectRouter);
 app.use("/api/classes", classesRouter);
 app.use("/api/departments", departmentRouter);
 
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok', message: 'Backend is running on Vercel!' });
+});
+
 app.use("/", (req, res) => {
   res.send("Welcome to the Classroom Management API");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port http://localhost:${PORT}`);
-});
